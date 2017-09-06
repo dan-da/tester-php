@@ -7,8 +7,12 @@ namespace tester;
  * This file implements a very basic test harness.
  */
 
-// be safe and sane.
-//require_once( dirname(__FILE__) . '/../strict_mode.funcs.php' );
+// be safe and sane.  use strictmode if available via composer.
+$autoload_file = __DIR__ . '/vendor/autoload.php';
+if( file_exists( $autoload_file )) {
+    require_once($autoload_file);
+    \strictmode\initializer::init();
+}
 
 return exit(main($argv));
 
