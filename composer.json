@@ -1,0 +1,13 @@
+{
+    "name": "dan-da/tester-php",
+    
+    "version": "1.0.0",
+
+    "bin": ["tester.php"],
+
+    "require": {
+    },
+
+    "require-dev": {
+    }
+}
