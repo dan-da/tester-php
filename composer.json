@@ -6,6 +6,7 @@
     "bin": ["tester.php"],
 
     "require": {
+        "dan-da/strictmode-php": "^1.0"
     },
 
     "require-dev": {
