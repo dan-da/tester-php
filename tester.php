@@ -107,7 +107,7 @@ abstract class test_base {
     }
     
     public function starts_with( $a, $b, $desc ) {
-        $ok = (bool)substr($a, 0, strlen($b));
+        $ok = substr($a, 0, strlen($b)) == $b;
         $a = $this->to_str($a);
         $b = $b === null ? 'null' : $b;
         $res = array( 'success' => $ok,
@@ -119,7 +119,7 @@ abstract class test_base {
     }
 
     public function ends_with( $a, $b, $desc ) {
-        $ok = (bool)substr($a, -strlen($b));
+        $ok = substr($a, -strlen($b)) == $b;
         $a = $this->to_str($a);
         $b = $b === null ? 'null' : $b;
         $res = array( 'success' => $ok,
