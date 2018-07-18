@@ -37,7 +37,7 @@ abstract class test_base {
     public function eq( $a, $b, $desc ) {
         $ok = $a == $b;
         $a = $this->to_str($a);
-        $b = $b === null ? 'null' : $b;
+        $b = $this->to_str($b);
         $res = array( 'success' => $ok,
                       'desc' => $desc,
                       'assertion' => 'equality',
@@ -49,7 +49,7 @@ abstract class test_base {
     public function ne( $a, $b, $desc ) {
         $ok = $a != $b;
         $a = $this->to_str($a);
-        $b = $b === null ? 'null' : $b;
+        $b = $this->to_str($b);
         $res = array( 'success' => $ok,
                       'desc' => $desc,
                       'assertion' => 'inequality',
@@ -61,7 +61,7 @@ abstract class test_base {
     public function gt( $a, $b, $desc ) {
         $ok = $a > $b;
         $a = $this->to_str($a);
-        $b = $b === null ? 'null' : $b;
+        $b = $this->to_str($b);
         $res = array( 'success' => $ok,
                       'desc' => $desc,
                       'assertion' => 'greatherthan',
@@ -73,7 +73,7 @@ abstract class test_base {
     public function lt( $a, $b, $desc ) {
         $ok = $a < $b;
         $a = $this->to_str($a);
-        $b = $b === null ? 'null' : $b;
+        $b = $this->to_str($b);
         $res = array( 'success' => $ok,
                       'desc' => $desc,
                       'assertion' => 'greatherthan',
@@ -85,7 +85,7 @@ abstract class test_base {
     public function contains( $a, $b, $desc ) {
         $ok = (bool)strstr($a, $b);
         $a = $this->to_str($a);
-        $b = $b === null ? 'null' : $b;
+        $b = $this->to_str($b);
         $res = array( 'success' => $ok,
                       'desc' => $desc,
                       'assertion' => 'contains',
@@ -97,7 +97,7 @@ abstract class test_base {
     public function not_contains( $a, $b, $desc ) {
         $ok = !(bool)strstr($a, $b);
         $a = $this->to_str($a);
-        $b = $b === null ? 'null' : $b;
+        $b = $this->to_str($b);
         $res = array( 'success' => $ok,
                       'desc' => $desc,
                       'assertion' => 'does not contain',
@@ -109,7 +109,7 @@ abstract class test_base {
     public function starts_with( $a, $b, $desc ) {
         $ok = substr($a, 0, strlen($b)) == $b;
         $a = $this->to_str($a);
-        $b = $b === null ? 'null' : $b;
+        $b = $this->to_str($b);
         $res = array( 'success' => $ok,
                       'desc' => $desc,
                       'assertion' => 'starts with',
@@ -121,7 +121,7 @@ abstract class test_base {
     public function ends_with( $a, $b, $desc ) {
         $ok = substr($a, -strlen($b)) == $b;
         $a = $this->to_str($a);
-        $b = $b === null ? 'null' : $b;
+        $b = $this->to_str($b);
         $res = array( 'success' => $ok,
                       'desc' => $desc,
                       'assertion' => 'ends with',
@@ -133,7 +133,7 @@ abstract class test_base {
     public function matches( $a, $b, $desc ) {
         $ok = preg_match($b, $a);
         $a = $this->to_str($a);
-        $b = $b === null ? 'null' : $b;
+        $b = $this->to_str($b);
         $res = array( 'success' => $ok,
                       'desc' => $desc,
                       'assertion' => 'matches',
@@ -145,7 +145,7 @@ abstract class test_base {
     public function has_key( array $a, $b, $desc ) {
         $ok = array_key_exists($b, $a);
         $a = $this->to_str($a);
-        $b = $b === null ? 'null' : $b;
+        $b = $this->to_str($b);
         $res = array( 'success' => $ok,
                       'desc' => $desc,
                       'assertion' => 'has key',
@@ -157,7 +157,7 @@ abstract class test_base {
     public function count_eq( array $a, $b, $desc ) {
         $ok = count($a) == $b;
         $a = $this->to_str($a);
-        $b = $b === null ? 'null' : $b;
+        $b = $this->to_str($b);
         $res = array( 'success' => $ok,
                       'desc' => $desc,
                       'assertion' => 'count',
@@ -169,7 +169,7 @@ abstract class test_base {
     public function count_gt( array $a, $b, $desc ) {
         $ok = count($a) > $b;
         $a = $this->to_str($a);
-        $b = $b === null ? 'null' : $b;
+        $b = $this->to_str($b);
         $res = array( 'success' => $ok,
                       'desc' => $desc,
                       'assertion' => 'count >',
@@ -181,7 +181,7 @@ abstract class test_base {
     public function count_gte( array $a, $b, $desc ) {
         $ok = count($a) >= $b;
         $a = $this->to_str($a);
-        $b = $b === null ? 'null' : $b;
+        $b = $this->to_str($b);
         $res = array( 'success' => $ok,
                       'desc' => $desc,
                       'assertion' => 'count >=',
@@ -194,7 +194,7 @@ abstract class test_base {
     public function count_lt( array $a, $b, $desc ) {
         $ok = count($a) < $b;
         $a = $this->to_str($a);
-        $b = $b === null ? 'null' : $b;
+        $b = $this->to_str($b);
         $res = array( 'success' => $ok,
                       'desc' => $desc,
                       'assertion' => 'count <',
@@ -206,7 +206,7 @@ abstract class test_base {
     public function count_lte( array $a, $b, $desc ) {
         $ok = count($a) <= $b;
         $a = $this->to_str($a);
-        $b = $b === null ? 'null' : $b;
+        $b = $this->to_str($b);
         $res = array( 'success' => $ok,
                       'desc' => $desc,
                       'assertion' => 'count <',
@@ -237,19 +237,6 @@ abstract class test_base {
         $this->results[] = $res;
     }
 
-    private function to_str($var) {
-        if(is_array($var)) {
-            return 'array';
-        }
-        if(is_object($var)) {
-            return 'object';
-        }
-        if($var === null) {
-            return 'null';
-        }
-        return (string)$var;
-    }
-    
     public function not_null( $a, $desc ) {
         $ok = $a !== null;
         $a = $this->to_str($a);
@@ -342,7 +329,29 @@ abstract class test_base {
                       'stack' => $this->backtrace() );
         $this->results[] = $res;
     }
+
+    protected function to_str($var) {
+        if(is_array($var)) {
+            return 'array';
+        }
+        if(is_object($var)) {
+            return 'object';
+        }
+        if($var === null) {
+            return 'null';
+        }
+        if(is_scalar($var) && !is_string($var)) {
+            return $var;
+        }
+        return '"' . addcslashes ( $this->shorten((string)$var), "\\\n" ) . '"';
+    }    
     
+    protected function shorten($str, $maxlen = 20) {
+        if(strlen($str) > $maxlen) {
+            $str = substr($str, 0, $maxlen-3) . '...';
+        }
+        return $str;
+    }
 }
 
 class test_printer {

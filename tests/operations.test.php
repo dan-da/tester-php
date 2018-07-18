@@ -6,6 +6,7 @@ class operations extends test_base {
 
     public function runtests() {
         $this->test1();
+        $this->test2();
     }
     
     protected function test1() {
@@ -42,4 +43,16 @@ class operations extends test_base {
         
     }
 
+    protected function test2() {
+        $long_a = 'ekqjwekfj ekwq jfkad jf;kdsa jf;kdsa jfsa;kd jf;kdsajfa;kds jfa;kdsjfksad jfksad jfa;kdsjfa;kdsjfewiuriqueriqewiiawfijasd kjsak jdsak jfsadk jfiewqr iqew';
+        $long_b = '342345243kjk k3j4k 234k2134j 132k4j1324k321j4 kjkdfjak fcsi3qj5k324j5k324jdk;fjqi34j 5432k j5 ';
+        $long_c = 'ekqjwekfj ekwq jfkad jf;kdsa jf;kdsa jfsa;kd';
+        
+        $this->contains( $long_a, $long_c, 'con' );
+        $this->not_contains( $long_a, $long_b, 'notcon' );
+        $this->matches( $long_a, '/.kdsa./', 'regex' );
+        $this->starts_with( $long_a, $long_c, 'sw' );
+    }
+    
+    
 }
