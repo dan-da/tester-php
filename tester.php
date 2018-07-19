@@ -43,7 +43,7 @@ abstract class test_base {
                       'assertion' => 'equality',
                       'result' => $ok ? "$a == $b" : "$a != $b",
                       'stack' => $this->backtrace() );
-        $this->results[] = $res;
+        $this->add_result($res);
     }
     
     public function ne( $a, $b, $desc ) {
@@ -55,7 +55,7 @@ abstract class test_base {
                       'assertion' => 'inequality',
                       'result' => $ok ? "$a != $b" : "$a == $b",
                       'stack' => $this->backtrace() );
-        $this->results[] = $res;
+        $this->add_result($res);
     }
 
     public function gt( $a, $b, $desc ) {
@@ -67,7 +67,7 @@ abstract class test_base {
                       'assertion' => 'greatherthan',
                       'result' => $ok ? "$a > $b" : "$a <= $b",
                       'stack' => $this->backtrace() );
-        $this->results[] = $res;
+        $this->add_result($res);
     }
 
     public function lt( $a, $b, $desc ) {
@@ -79,7 +79,7 @@ abstract class test_base {
                       'assertion' => 'greatherthan',
                       'result' => $ok ? "$a < $b" : "$a >= $b",
                       'stack' => $this->backtrace() );
-        $this->results[] = $res;
+        $this->add_result($res);
     }
     
     public function contains( $a, $b, $desc ) {
@@ -91,7 +91,7 @@ abstract class test_base {
                       'assertion' => 'contains',
                       'result' => $ok ? "$a contains $b" : "$a doesn't contain $b",
                       'stack' => $this->backtrace() );
-        $this->results[] = $res;
+        $this->add_result($res);
     }
 
     public function not_contains( $a, $b, $desc ) {
@@ -103,7 +103,7 @@ abstract class test_base {
                       'assertion' => 'does not contain',
                       'result' => $ok ? "$a doesn't contain $b" : "$a contains $b",
                       'stack' => $this->backtrace() );
-        $this->results[] = $res;
+        $this->add_result($res);
     }
     
     public function starts_with( $a, $b, $desc ) {
@@ -115,7 +115,7 @@ abstract class test_base {
                       'assertion' => 'starts with',
                       'result' => $ok ? "$a starts with $b" : "$a doesn't start with $b",
                       'stack' => $this->backtrace() );
-        $this->results[] = $res;
+        $this->add_result($res);
     }
 
     public function ends_with( $a, $b, $desc ) {
@@ -127,7 +127,7 @@ abstract class test_base {
                       'assertion' => 'ends with',
                       'result' => $ok ? "$a ends with $b" : "$a doesn't end with $b",
                       'stack' => $this->backtrace() );
-        $this->results[] = $res;
+        $this->add_result($res);
     }
 
     public function matches( $a, $b, $desc ) {
@@ -139,7 +139,7 @@ abstract class test_base {
                       'assertion' => 'matches',
                       'result' => $ok ? "$a matches $b" : "$a doesn't match $b",
                       'stack' => $this->backtrace() );
-        $this->results[] = $res;
+        $this->add_result($res);
     }
 
     public function has_key( array $a, $b, $desc ) {
@@ -151,7 +151,7 @@ abstract class test_base {
                       'assertion' => 'has key',
                       'result' => $ok ? "$a has key $b" : "$a doesn't have key $b",
                       'stack' => $this->backtrace() );
-        $this->results[] = $res;
+        $this->add_result($res);
     }
 
     public function count_eq( array $a, $b, $desc ) {
@@ -163,7 +163,7 @@ abstract class test_base {
                       'assertion' => 'count',
                       'result' => $ok ? "count($a) == $b" : "count($a) != $b",
                       'stack' => $this->backtrace() );
-        $this->results[] = $res;
+        $this->add_result($res);
     }    
 
     public function count_gt( array $a, $b, $desc ) {
@@ -175,7 +175,7 @@ abstract class test_base {
                       'assertion' => 'count >',
                       'result' => $ok ? "count($a) is > $b" : "count($a) is not > $b",
                       'stack' => $this->backtrace() );
-        $this->results[] = $res;
+        $this->add_result($res);
     }    
 
     public function count_gte( array $a, $b, $desc ) {
@@ -187,7 +187,7 @@ abstract class test_base {
                       'assertion' => 'count >=',
                       'result' => $ok ? "count($a) is >= $b" : "count($a) is not >= $b",
                       'stack' => $this->backtrace() );
-        $this->results[] = $res;
+        $this->add_result($res);
     }    
     
     
@@ -200,7 +200,7 @@ abstract class test_base {
                       'assertion' => 'count <',
                       'result' => $ok ? "count($a) is < $b" : "count($a) is not < $b",
                       'stack' => $this->backtrace() );
-        $this->results[] = $res;
+        $this->add_result($res);
     }    
 
     public function count_lte( array $a, $b, $desc ) {
@@ -212,7 +212,7 @@ abstract class test_base {
                       'assertion' => 'count <',
                       'result' => $ok ? "count($a) is <= $b" : "count($a) is not <= $b",
                       'stack' => $this->backtrace() );
-        $this->results[] = $res;
+        $this->add_result($res);
     }        
     
     public function is_empty( $a, $desc ) {
@@ -223,7 +223,7 @@ abstract class test_base {
                       'assertion' => 'is empty',
                       'result' => $ok ? "$a is empty" : "$a is not empty",
                       'stack' => $this->backtrace() );
-        $this->results[] = $res;
+        $this->add_result($res);
     }
 
     public function not_empty( $a, $desc ) {
@@ -234,7 +234,7 @@ abstract class test_base {
                       'assertion' => 'is not empty',
                       'result' => $ok ? "$a is not empty" : "$a is empty",
                       'stack' => $this->backtrace() );
-        $this->results[] = $res;
+        $this->add_result($res);
     }
 
     public function not_null( $a, $desc ) {
@@ -246,7 +246,7 @@ abstract class test_base {
                       'assertion' => 'not null',
                       'result' => $ok ? "$a is not null" : "$a is null",
                       'stack' => $this->backtrace() );
-        $this->results[] = $res;
+        $this->add_result($res);
     }
 
     public function is_null( $a, $desc ) {
@@ -257,7 +257,7 @@ abstract class test_base {
                       'assertion' => 'is null',
                       'result' => $ok ? "$a is null" : "$a is not null",
                       'stack' => $this->backtrace() );
-        $this->results[] = $res;
+        $this->add_result($res);
     }
 
     public function is_int( $a, $desc ) {
@@ -268,7 +268,7 @@ abstract class test_base {
                       'assertion' => 'is integer',
                       'result' => $ok ? "$a is integer" : "$a is not integer",
                       'stack' => $this->backtrace() );
-        $this->results[] = $res;
+        $this->add_result($res);
     }
 
     public function is_float( $a, $desc ) {
@@ -279,7 +279,7 @@ abstract class test_base {
                       'assertion' => 'is float',
                       'result' => $ok ? "$a is a float" : "$a is not a float",
                       'stack' => $this->backtrace() );
-        $this->results[] = $res;
+        $this->add_result($res);
     }
 
     public function is_hex( $a, $desc ) {
@@ -294,7 +294,7 @@ abstract class test_base {
                       'assertion' => 'is hex',
                       'result' => $ok ? "$a is hex" : "$a is not hex",
                       'stack' => $this->backtrace() );
-        $this->results[] = $res;
+        $this->add_result($res);
     }    
     
     public function is_string( $a, $desc ) {
@@ -305,7 +305,7 @@ abstract class test_base {
                       'assertion' => 'is float',
                       'result' => $ok ? "$a is a string" : "$a is not a string",
                       'stack' => $this->backtrace() );
-        $this->results[] = $res;
+        $this->add_result($res);
     }
 
     public function is_array( $a, $desc ) {
@@ -316,7 +316,7 @@ abstract class test_base {
                       'assertion' => 'is array',
                       'result' => $ok ? "$a is an array" : "$a is not an array",
                       'stack' => $this->backtrace() );
-        $this->results[] = $res;
+        $this->add_result($res);
     }
 
     public function is_object( $a, $desc ) {
@@ -327,7 +327,7 @@ abstract class test_base {
                       'assertion' => 'is array',
                       'result' => $ok ? "$a is an objet" : "$a is not an object",
                       'stack' => $this->backtrace() );
-        $this->results[] = $res;
+        $this->add_result($res);
     }
 
     protected function to_str($var) {
@@ -352,6 +352,20 @@ abstract class test_base {
         }
         return $str;
     }
+    
+    protected function add_result($result) {
+        $result['failnotes'] = $this->add_failnotes();
+        $this->results[] = $result;
+    }
+
+    /**
+     * override this method to add notes about failure,
+     * such as executed commands or whatever.
+     * @return array of strings.
+     */
+    protected function add_failnotes() {
+        return [];
+    }
 }
 
 class test_printer {
@@ -369,7 +383,8 @@ class test_printer {
                 $pass_cnt ++;
             }
             else {
-                echo sprintf( "[fail] %s  |  %s\n%s\n\n", $r['result'], $r['desc'], $r['stack'] );
+                $failnotes = @count($r['failnotes']) ? "\n" . implode("\n", $r['failnotes']) : '';
+                echo sprintf( "[fail] %s  |  %s\n%s%s\n\n", $r['result'], $r['desc'], $r['stack'], $failnotes );
                 $fail_cnt ++;
             }
         }
