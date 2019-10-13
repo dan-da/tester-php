@@ -107,7 +107,7 @@ abstract class test_base {
     }
     
     public function starts_with( $a, $b, $desc ) {
-        $ok = substr($a, 0, strlen($b)) == $b;
+        $ok = mb_substr($a, 0, mb_strlen($b)) == $b;
         $a = $this->to_str($a);
         $b = $this->to_str($b);
         $res = array( 'success' => $ok,
@@ -119,7 +119,7 @@ abstract class test_base {
     }
 
     public function ends_with( $a, $b, $desc ) {
-        $ok = substr($a, -strlen($b)) == $b;
+        $ok = mb_substr($a, -mb_strlen($b)) == $b;
         $a = $this->to_str($a);
         $b = $this->to_str($b);
         $res = array( 'success' => $ok,
@@ -284,8 +284,8 @@ abstract class test_base {
 
     public function is_hex( $a, $desc ) {
         // strip '0x' at start if present.
-        if( substr($a, 0, 2) == '0x') {
-            $a = substr($a, 2);
+        if( mb_substr($a, 0, 2) == '0x') {
+            $a = mb_substr($a, 2);
         }
         $ok = ctype_xdigit($a);
         $a = $this->to_str($a);
@@ -347,8 +347,8 @@ abstract class test_base {
     }    
     
     protected function shorten($str, $maxlen = 20) {
-        if(strlen($str) > $maxlen) {
-            $str = substr($str, 0, $maxlen-3) . '...';
+        if(mb_strlen($str) > $maxlen) {
+            $str = mb_substr($str, 0, $maxlen-3) . '...';
         }
         return $str;
     }
